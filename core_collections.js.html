@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>core/collections.js - eXir</title>
+    
+    <meta name="description" content="Javascript Library" />
+    
+    
+    
+    <meta property="og:title" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content=""/>
+    
+    <meta property="og:url" content=""/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h2><a href="https://github.com/kasra-sh/exir" target="_blank" class="menu-item" id="website_link" >Project Website</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-t00_introduction.html">Introduction</a></li><li><a href="tutorial-t01_00_installation.html">&nbsp;&nbsp;1 - Installation</a></li><li><a href="tutorial-t01_01_getting_started.html">&nbsp;&nbsp;2 - Getting Started</a></li></ul><h3>Modules</h3><ul><li><a href="core.module_core_cases.html">core/cases</a><ul class='methods'><li data-type='method' style='display: none;'><a href="core.module_core_cases.html#.kebab">kebab</a></li><li data-type='method' style='display: none;'><a href="core.module_core_cases.html#.snake">snake</a></li><li data-type='method' style='display: none;'><a href="core.module_core_cases.html#.camel">camel</a></li><li data-type='method' style='display: none;'><a href="core.module_core_cases.html#.pascal">pascal</a></li></ul></li><li><a href="core.module_core_collections.html">core/collections</a><ul class='methods'><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~item">item</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~contains">contains</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~add">add</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~remove">remove</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~emptyOf">emptyOf</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~concat">concat</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~objectValues">objectValues</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~forN">forN</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~forEachRange">forEachRange</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~forEach">forEach</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~forEachRight">forEachRight</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~firstIndex">firstIndex</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~first">first</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~startsWith">startsWith</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~lastIndex">lastIndex</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~last">last</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~endsWith">endsWith</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~reverse">reverse</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~any">any</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~all">all</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~filter">filter</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~omit">omit</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~filterRight">filterRight</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~maxIndex">maxIndex</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~max">max</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~minIndex">minIndex</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~min">min</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~map">map</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~flatMap">flatMap</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~reduce">reduce</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~reduceRight">reduceRight</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~keyValuePairs">keyValuePairs</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~entries">entries</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~translateObject">translateObject</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~deepMerge">deepMerge</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~deepClone">deepClone</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~join">join</a></li><li data-type='method' style='display: none;'><a href="core.module_core_collections.html#~groupBy">groupBy</a></li></ul></li><li><a href="core.module_core_functions.html">core/functions</a><ul class='methods'><li data-type='method' style='display: none;'><a href="core.module_core_functions.html#~funcBodyEquals">funcBodyEquals</a></li><li data-type='method' style='display: none;'><a href="core.module_core_functions.html#~throttle">throttle</a></li><li data-type='method' style='display: none;'><a href="core.module_core_functions.html#~debounce">debounce</a></li><li data-type='method' style='display: none;'><a href="core.module_core_functions.html#~bindArgs">bindArgs</a></li></ul></li><li><a href="core.module_core_types.html">core/types</a><ul class='methods'><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~typeName">typeName</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isUnd">isUnd</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isNull">isNull</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isVal">isVal</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isNum">isNum</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isStr">isStr</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isFun">isFun</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isObj">isObj</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isArr">isArr</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isPrim">isPrim</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isList">isList</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isMutableList">isMutableList</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isSet">isSet</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isMap">isMap</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isError">isError</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isEl">isEl</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isEls">isEls</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~hasField">hasField</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~isEmpty">isEmpty</a></li><li data-type='method' style='display: none;'><a href="core.module_core_types.html#~dict">dict</a></li></ul></li><li><a href="http.module_http_ajax.html">http/ajax</a></li><li><a href="http.module_http_client.html">http/client</a></li><li><a href="module-http_methods.html">http/methods</a><ul class='methods'><li data-type='method' style='display: none;'><a href="module-http_methods.html#~makeRequest">makeRequest</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~sendRequest">sendRequest</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~Get">Get</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~Post">Post</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~Delete">Delete</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~Put">Put</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~Patch">Patch</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~sendGet">sendGet</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~sendDelete">sendDelete</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~sendPost">sendPost</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~sendPut">sendPut</a></li><li data-type='method' style='display: none;'><a href="module-http_methods.html#~sendPatch">sendPatch</a></li></ul></li><li><a href="dom.module_dom.html">dom</a><ul class='methods'><li data-type='method' style='display: none;'><a href="dom.module_dom.html#~$">$</a></li><li data-type='method' style='display: none;'><a href="dom.module_dom.html#~$$">$$</a></li><li data-type='method' style='display: none;'><a href="dom.module_dom.html#~queryOf">queryOf</a></li><li data-type='method' style='display: none;'><a href="dom.module_dom.html#~style">style</a></li><li data-type='method' style='display: none;'><a href="dom.module_dom.html#~hasStyle">hasStyle</a></li><li data-type='method' style='display: none;'><a href="dom.module_dom.html#~parseQuery">parseQuery</a></li></ul></li><li></li><li></li></ul><h3>Namespaces</h3><ul><li><a href="core.html">core</a></li><li><a href="http.html">http</a></li><li><a href="dom.html">dom</a><ul class='methods'><li data-type='method' style='display: none;'><a href="dom.html#.setEvent">setEvent</a></li></ul></li></ul><h3>Classes</h3><ul><li><a href="core.Extension.html">Extension</a><ul class='methods'><li data-type='method' style='display: none;'><a href="core.Extension.html#define">define</a></li></ul></li><li><a href="core.module_core_types-Enum.html">Enum</a></li><li><a href="http.module_http_ajax-Ajax.html">Ajax</a><ul class='methods'><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#header">header</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#headers">headers</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#onSuccess">onSuccess</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#onUploadSuccess">onUploadSuccess</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#onFail">onFail</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#onProgress">onProgress</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#onUploadProgress">onUploadProgress</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#withContent">withContent</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#xmlData">xmlData</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#formData">formData</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#jsonData">jsonData</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#urlEncodedData">urlEncodedData</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#send">send</a></li><li data-type='method' style='display: none;'><a href="http.module_http_ajax-Ajax.html#sendAsync">sendAsync</a></li></ul></li><li><a href="http.module_http_client-XHttpClient.html">XHttpClient</a><ul class='methods'><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#send">send</a></li><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#get">get</a></li><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#post">post</a></li><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#put">put</a></li><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#patch">patch</a></li><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#delete">delete</a></li><li data-type='method' style='display: none;'><a href="http.module_http_client-XHttpClient.html#cancel">cancel</a></li></ul></li><li><a href="http.HttpContent.html">HttpContent</a></li><li><a href="http.HttpRq.html">HttpRq</a><ul class='methods'><li data-type='method' style='display: none;'><a href="http.HttpRq.html#setMethod">setMethod</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#setUrl">setUrl</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#setArg">setArg</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#setHeader">setHeader</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#getHeader">getHeader</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#setContent">setContent</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#jsonContent">jsonContent</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#xmlContent">xmlContent</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#formContent">formContent</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#formMultiPartContent">formMultiPartContent</a></li><li data-type='method' style='display: none;'><a href="http.HttpRq.html#formUrlEncodedContent">formUrlEncodedContent</a></li></ul></li><li><a href="http.HttpRs.html">HttpRs</a></li><li><a href="dom.module_dom-QueryParams.html">QueryParams</a></li></ul><h3>Global</h3><ul><li><a href="global.html#HttpMethod">HttpMethod</a></li><li><a href="global.html#HttpRequestOptions">HttpRequestOptions</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">core/collections.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * @module core/collections
+ * @memberOf core
+ */
+
+const T = require("./types");
+
+if (!global._X_LOOP_BREAK_) {
+    global._X_LOOP_BREAK_ = Symbol("BREAK_LOOP");
+    global._X_ANY_ = Symbol("ANY");
+    global._X_ALL_ = Symbol("ALL");
+}
+/**
+ * Break from functional loops: forEach, filter, ...
+ * @type {symbol}
+ */
+const BREAK = global._X_LOOP_BREAK_;
+/**
+ * Match Any: Used as value in predicate object
+ * @type {symbol}
+ */
+const ANY = global._X_ANY_;
+const ALL = global._X_ALL_;
+const UNSAFE_PROPS = ['__proto__', 'constructor', '__defineGetter__', '__defineSetter__', 'prototype'];
+
+/**
+ * Get item by index from multiple source types
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} s - source
+ * @param {Number|String} i - item index
+ * @returns {any|null|undefined}
+ */
+function item(s, i) {
+    if (!T.isVal(s)) return undefined;
+    if (T.isObj(s)) return s[i]
+    if (T.isStr(s)) return s[i]
+    if (T.isArr(s)) return s[i]
+    else return s.item(i)
+}
+
+/**
+ * Source contains value or key:value
+ *
+ * @param {Array|Object|String} src
+ * @param {any} value
+ * @param {String|undefined} [key]
+ * @returns {boolean}
+ */
+function contains(src, value, key) {
+    if (!T.isVal(src)) return false;
+    if (!T.isArr(src) &amp;&amp; T.isObj(src)) return src[key] === value;
+    return src.indexOf(value) >= 0;
+}
+
+/**
+ * Add item(s) to source
+ *
+ * @param {Array|{add:Function}} src - source
+ * @param {any} v - values
+ */
+function add(src, ...v) {
+    if (T.isArr(src)) {
+        forEach(v, (vi) => src.push(vi))
+    } else if (T.isMutableList(src)) {
+        src.add(v);
+    }
+}
+
+/**
+ * Remove item(s) from source
+ *
+ * @param {Array|String} src
+ * @param {...any} it
+ * @returns {boolean}
+ */
+function remove(src, ...it) {
+    it = flatMap(it);
+    let any = false;
+    forEach(it, (item) => {
+        let idx = src.indexOf(item);
+        if (idx >= 0) {
+            any = true
+            src.splice(idx, 1);
+        }
+    });
+
+    return any;
+}
+
+/**
+ * Toggles items in source
+ *
+ * @param {Array} src
+ * @param {...any} c
+ */
+function toggle(src, ...c) {
+    if (c.length === 0) return;
+    c = flatMap(c);
+    let idx = undefined;
+    if (c.length === 1) {
+        if (!remove(src, c)) {
+            add(src, c[0])
+        }
+    } else {
+        c.push(c[0]);
+        let any = false;
+        forEach(src, (cl, i) => {
+            idx = c.indexOf(cl);
+            if (idx >= 0 &amp;&amp; c.length > (idx + 1)) {
+                any = true;
+                src[i] = c[idx + 1]
+            }
+        });
+        if (!any) {
+            src.push(c[0])
+        }
+    }
+}
+
+function objMatchOne(o, match) {
+    let m = Object.keys(match);
+    for (let k of m) {
+        // if (!T.isObj(o[k])) continue;
+        if (match[k] === ANY &amp;&amp; o.hasOwnProperty(k)) return true;
+        if (match[k] === o[k]) return true;
+    }
+    return false
+}
+
+function objMatchAll(o, match) {
+    let m = Object.keys(match);
+    for (let k of m) {
+        // if (!T.isObj(o[k])) return false;
+        if (match[k] === ANY) continue;
+        if (match[k] !== o[k]) return false
+    }
+    return true
+}
+
+function predicate(f, def = () => true, inc = true) {
+    if (T.isUnd(f)) return def;
+    if (T.isFun(f)) return f;
+    else if (f instanceof RegExp) return (v) => !T.isObj(v) ? f.test(v.toString()) : false;
+    else if (T.isObj(f)) {
+        if (Object.keys(f).length === 0) return def;
+        return inc ? (v) => objMatchOne(v, f) : (v) => objMatchAll(v, f);
+    } else return (v) => v === f;
+}
+
+function funOrKey(f) {
+    if (T.isUnd(f)) return (v) => v;
+    if (T.isFun(f)) return f;
+    if (T.isStr(f)) {
+        const key = f;
+        f = (v) => v[key];
+    }
+    throw Error(`Predicate ${f} cannot be of type ${typeof f}`)
+}
+
+/**
+ * Create empty instance of given source
+ *
+ * @param {any} src - source object
+ * @param {any} def - default value for primitives
+ * @returns {any} empty instance of src
+ */
+function emptyOf(src, def = {}) {
+    if (T.isStr(src)) return "";
+    if (T.isList(src)) return [];
+    if (T.isObj(src)) {
+        if (T.isEl(src)) {
+            if (src.nodeType === 3 || src.nodeType === 8) {
+                return document.createTextNode(src.textContent);
+            } else {
+                return document.createElement(src.tagName);
+            }
+        }
+        if (src.__proto__)
+            return Object.create(src.__proto__);
+        return {};
+    }
+    return def
+}
+
+/**
+ * Type-agnostic concat
+ *
+ * @param {Array|String|Object} target
+ * @param {Array|String|Object} source
+ * @returns {Array|String|Object}
+ */
+function concat(target, source) {
+    if (T.isStr(target)) {
+        return target.concat(source);
+    }
+    if (T.isArr(target)) {
+        return target.concat(source);
+    }
+
+    for (let k of Object.keys(source)) {
+        if (!target[k])
+            target[k] = source[k];
+    }
+    return target
+}
+
+/**
+ * Polyfill-like for Object.values (uses native method if available)
+ *
+ * @param {Object} obj
+ * @returns {Array|undefined} - array of values
+ */
+function objectValues(obj) {
+    if (Object.values) {
+        return Object.values(obj);
+    } else {
+        return map(obj, (v)=>v)
+    }
+}
+
+/**
+ * Index for loop from "init" to "finish"(included) by "step"
+ *
+ * @param {Function} func
+ * @param {Number} init
+ * @param {Number} finish
+ * @param {Number} [step]
+ */
+function forN(func, init=0, finish=0, step=init&lt;finish?1:-1) {
+    if (step>0) {
+        for (; init&lt;=finish; init+=step) {
+            func(init)
+        }
+    }
+    for (; init>=finish; init+=step) {
+        func(init)
+    }
+}
+
+/**
+ * forEach(left) with limited range
+ *
+ * @param {Array|Object|NodeList|HTMLCollection} src
+ * @param {Function} func
+ * @param {Number} [start]
+ * @param {Number?} [end]
+ * @returns {*|number}
+ */
+function forEachRange(src, func, start = 0, end) {
+    if (!T.isArr(src) || !T.isStr(src)) {
+        let keys = Object.keys(src);
+        end = end || keys.length - 1
+        for (let i = start; i &lt;= end; i++) {
+            let r = func(src[keys[i]], keys[i], i, src);
+            if (r === BREAK) return i;
+        }
+        return end;
+    }
+    end = end || src.length;
+    for (let i = start; i &lt; end; i++) {
+        let r = func(item(src, i), i, i, src);
+        if (r === BREAK) return i;
+    }
+    return end
+}
+
+/**
+ * Type-agnostic forEach loop
+ *
+ * @param src
+ * @param func
+ * @returns {number|*}
+ */
+function forEach(src, func) {
+    if (!T.isVal(src)) return -1;
+    if (!T.isArr(src) || !T.isStr(src) || !T.isList(src)) {
+        let i = 0;
+        let keys = Object.keys(src);
+        const len = keys.length;
+        for (; i &lt; len; i++) {
+            // let r = ;
+            const k = keys[i], v = src[k];
+            if (func(v, k, i, src) === BREAK) return i;
+        }
+        return i;
+    }
+    const len = src.length;
+    if (!T.isArr(src)) {
+        for (let i = 0; i &lt; len; i++) {
+            const v = src[i];
+            let r = func(v, i, i, src);
+            if (r === BREAK) return i;
+        }
+    } else {
+        for (let i = 0; i &lt; len; i++) {
+            const v = item(src, i);
+            let r = func(v, i, i, src);
+            if (r === BREAK) return i;
+        }
+    }
+    return src.length
+}
+
+/**
+ * Type-agnostic forEachRight loop
+ *
+ * @param src
+ * @param func
+ * @param range
+ * @returns {number|*}
+ */
+function forEachRight(src, func, range = []) {
+    if (!T.isArr(src) || !T.isStr(src)) {
+        let i = 0;
+        let keys = Object.keys(src);
+        for (let i = keys.length - 1; i >= 0; i--) {
+            if (i &lt; range[1]) continue;
+            if (i >= range[0]) return i;
+            let r = func(src[keys[i]], keys[i], i, src);
+            if (r === BREAK) return i;
+        }
+        return i;
+    }
+    for (let i = src.length - 1; i >= 0; i--) {
+        let r = func(item(src, i), i, i, src);
+        if (r === BREAK) return i;
+    }
+    return src.length
+}
+
+/**
+ * Extended version of native indexOf method, using {@link forEach}
+ * @see forEach
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Object|Array} pred - predicate function/{key:value}/[keys]
+ * @returns {number}
+ */
+function firstIndex(src, pred) {
+    pred = predicate(pred, () => true);
+    let r = -1;
+    forEach(src, function (v, k, i) {
+        r = pred(v, k, i, src);
+        if (r === true) {
+            r = i;
+            return BREAK;
+        }
+    })
+    return r;
+}
+
+/**
+ * Extended version of native first method, using {@link firstIndex}
+ * @see firstIndex
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Object|Array} pred - predicate function/{key:value}/[keys]
+ * @returns {*}
+ */
+function first(src, pred) {
+    return item(src, firstIndex(src, pred))
+}
+
+/**
+ * Returns true if first item matches predicate
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Object|Array} pred - predicate function/{key:value}/[keys] pred
+ * @returns {boolean|*}
+ */
+function startsWith(src, pred) {
+    if (T.isStr(src) &amp;&amp; T.isStr(pred)) {
+        return src.indexOf(pred) === 0
+    }
+    pred = predicate(pred, () => true);
+    return pred(first(src))
+}
+
+/**
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Array|Object} pred
+ * @returns {number}
+ */
+function lastIndex(src, pred) {
+    pred = predicate(pred, () => true);
+    let r = -1;
+    forEachRight(src, function (v, k, i) {
+        r = pred(v, k, i);
+        if (r === true) {
+            r = i;
+            return BREAK;
+        }
+    })
+    return r;
+}
+
+/**
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Array|Object} pred
+ * @returns {*}
+ */
+function last(src, pred) {
+    return src[lastIndex(src, pred)]
+}
+
+/**
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Array|Object} pred
+ * @returns {boolean|*}
+ */
+function endsWith(src, pred) {
+    if (T.isStr(src) &amp;&amp; T.isStr(pred)) {
+        return src.indexOf(pred) === src.length - pred.length
+    }
+    pred = predicate(pred, () => true);
+    return pred(last(src))
+}
+
+/**
+ * Reverse array-like src
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @returns {Array|Object|String|NodeList|HTMLCollection} - reversed src
+ */
+function reverse(src) {
+    if (T.isArr(src)) return src.reverse();
+    let rev = "";
+    forEachRight(src, function (it) {
+        rev += it;
+    });
+    return rev;
+}
+
+/**
+ * A more versatile alternative to native "some" method
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Array|Object} pred
+ * @returns {boolean}
+ */
+function any(src, pred) {
+    // if (!func){
+    //     if (T.isArr(src) || T.isStr(src)) return src.length>0;
+    //     return Object.keys(src).length>0;
+    // }
+    let fn = predicate(pred);
+    let r = false;
+    forEach(src, function (v, k, i, src) {
+        r = fn(v, k, i, src);
+        if (r === true) return BREAK;
+    });
+    return r;
+}
+
+/**
+ * A more versatile alternative to native "every" method
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src
+ * @param {Function|Array|Object} pred
+ * @returns {boolean}
+ */
+function all(src, pred) {
+    pred = predicate(pred, () => true);
+    let r = true;
+    forEach(src, function (v, k, i, src) {
+        r = pred(v, k, i, src);
+        if (r === false) return BREAK;
+    })
+    return r;
+}
+
+function filterStr(src, pred, right = false, omit = false) {
+    pred = predicate(pred, () => true);
+    let res = "";
+    let loop = right ? forEachRight : forEach;
+    loop(src, function (v, k, i) {
+        if (!pred || pred(v, k, i, src) === omit) res += v;
+    });
+    return res;
+}
+
+function filterObj(src, pred, right = false, omit = false) {
+    if (T.isArr(pred)) {
+        let a = Object.assign({}, pred)
+        if (omit) pred = (v, k) => !any(a, k);
+        else pred = (v, k) => any(a, k);
+    } else
+        pred = predicate(pred, () => true);
+    let res = {};
+    // let loop = right ? ForEachRight : ForEach;
+    const keys = Object.keys(src);
+    const len = keys.length;
+
+    if (!right) {
+        for (let i = 0; i &lt; len; i++) {
+            const k = keys[i]
+            const v = src[k]
+            if (pred(v, k, i, src) !== omit) res[k] = v;
+        }
+    } else {
+        for (let i = len-1; i >=0; i--) {
+            const k = keys[i]
+            const v = src[k]
+            if (pred(v, k, i, src) !== omit) res[k] = v;
+        }
+    }
+
+    // loop(src, function (v, k, i) {
+    //     if (pred(v, k, i, src) !== omit) res[k] = v;
+    // });
+    return res;
+}
+
+function filterArr(src, pred, right = false, omit = false) {
+    if (T.isArr(pred)) {
+        let a = Object.assign([], pred)
+        if (omit) pred = (v, k, i) => !any(a, i);
+        else pred = (v, k, i) => any(a, i);
+    } else
+        pred = predicate(pred, () => true);
+    let res = [];
+    const len = src.length;
+    if (!right) {
+        for (let i = 0; i &lt; len; i++) {
+            const v = src[i]
+            if (pred(v, i, i, src) !== omit) {
+                res.push(v);
+            }
+        }
+    } else {
+        for (let i = len - 1; i >= 0; i--) {
+            const v = src[i]
+            if (!pred(v, i, i, src) !== omit) {
+                res.push(v);
+            }
+        }
+    }
+    return res;
+}
+
+/**
+ * A more versatile alternative to native "filter" method
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src - source
+ * @param {Function|Array|Object} pred - predicate function/{key:value}/[keys]
+ * @param {boolean} [right] - reverse loop
+ * @returns {Array|Object|String}
+ */
+function filter(src, pred, right = false) {
+    if (T.isStr(src)) return filterStr(src, pred, right);
+    if (T.isArr(src) || T.isList(src)) return filterArr(src, pred, right);
+    return filterObj(src, pred, right);
+}
+
+/**
+ * Opposite of filter, returns items not matching predicate
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src - source
+ * @param {Function|Array|Object} pred - predicate function/{key:value}/[keys]
+ * @param {boolean} [right] - reverse loop
+ * @returns {Array|Object|String}
+ */
+function omit(src, pred, right = false) {
+    if (T.isStr(src)) return filterStr(src, pred, right, true);
+    if (T.isArr(src) || T.isList(src)) return filterArr(src, pred, right, true);
+    return filterObj(src, pred, right, true);
+}
+
+/**
+ * {@link filter} in reverse order (right)
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src - source
+ * @param {Function|Array|Object} pred - predicate function/{key:value}/[keys]
+ * @returns {Array|Object|String}
+ */
+function filterRight(src, pred) {
+    return filter(src, pred, true);
+}
+
+/**
+ * Find max index
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} list
+ * @param {Function|String} pred - predicate function/key
+ * @return {number}
+ */
+function maxIndex(list, pred) {
+    pred = funOrKey(pred);
+    let mx;
+    let index = -1;
+    forEach(list, function (i, ix) {
+        let x = pred(i, ix);
+        if (!mx) {
+            mx = x;
+            index = ix;
+        } else if (x >= mx) {
+            mx = x;
+            index = ix;
+        }
+    });
+    return index;
+}
+
+/**
+ * Find max
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} list
+ * @param {Function|String} pred - predicate function/key
+ * @return {number}
+ */
+function max(list, pred) {
+    return list[maxIndex(list, pred)];
+}
+
+/**
+ * Find min index
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} list
+ * @param {Function|String} pred - predicate function/key
+ * @return {number}
+ */
+function minIndex(list, pred) {
+    pred = funOrKey(pred);
+    let mn;
+    let index = -1;
+    forEach(list, function (i, ix) {
+        let x = pred(i, ix);
+        if (!mn) {
+            mn = x;
+            index = ix;
+        } else if (x &lt;= mn) {
+            mn = x;
+            index = ix;
+        }
+    });
+    return index;
+}
+
+/**
+ * Find min
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} list
+ * @param {Function|String} pred - predicate function/key
+ * @return {number}
+ */
+function min(list, pred) {
+    return list[minIndex(list, pred)];
+}
+
+function mapArr(src, func, right = false) {
+    let res = [];
+    // let loop = right ? ForEachRight : ForEach;
+    const len = src.length;
+    if (!right) {
+        for (let i=0; i&lt;len; i++) {
+            let r = func(src[i], i, src);
+            if (r === BREAK) break;
+            if (!T.isUnd(r))
+                res.push(r);
+        }
+    } else {
+        for (let i=len; i>=0; i--) {
+            let r = func(src[i], i, src);
+            if (r === BREAK) break;
+            if (!T.isUnd(r))
+                res.push(r);
+        }
+    }
+    // loop(src, function (a, i) {
+    //     let r = func(a, i, src);
+    //     if (!T.isUnd(r))
+    //         res.push(r);
+    // });
+    return res;
+}
+
+function mapObj(src, func, right = false) {
+    let res = {};
+    // let loop = right ? ForEachRight : ForEach;
+    const keys = Object.keys(src);
+    const len = src.length;
+    if (!right) {
+        for (let i=0; i&lt;len; i++) {
+            const k = keys[i];
+            const v = src[k];
+            let r = func(v, k, i, src);
+            if (r === BREAK) break;
+            if (!T.isUnd(r))
+                res[k] = r
+        }
+    } else {
+        for (let i=len; i>=0; i--) {
+
+            const k = keys[i];
+            const v = src[k];
+            let r = func(v, k, i, src);
+            if (r === BREAK) break;
+            if (!T.isUnd(r))
+                res[k] = r
+        }
+    }
+    // loop(src, function (v, k, i) {
+    //     let r = func(v, k, i, src);
+    //     if (!T.isUnd(r))
+    //         res[k] = r
+    // });
+    return res;
+}
+
+/**
+ * A more versatile alternative to native "map" method
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src - source
+ * @param {Function|Array|Object} transform - transformer function
+ * @param {boolean} [right] - reverse loop
+ * @returns {Array|Object|String}
+ */
+function map(src, transform, right = false) {
+    transform = predicate(transform, (v) => v);
+    if (T.isArr(src)) return mapArr(src, transform, right);
+    else if (T.isObj(src)) return mapObj(src, transform, right);
+}
+
+/**
+ * A more versatile alternative to native "flatMap" method, flattens first level items
+ *
+ * @param {Array|Object|String|NodeList|HTMLCollection} src - source
+ * @param {Function|Array|Object} [transform] - transformer function
+ * @returns {Array|Object|String}
+ */
+function flatMap(src, transform) {
+    let res;
+    if (T.isStr(src)) res = ""
+    else if (T.isArr(src)) res = []
+    else res = {};
+    forEach(src, function (a, i) {
+        let f;
+        if (!!transform) {
+            f = transform(a, i, src);
+        } else {
+            if (!T.isArr(res) &amp;&amp; T.isObj(res)) {
+                f = {};
+                f[i] = a;
+            } else {
+                f = a
+            }
+        }
+        res = concat(res, f);
+    });
+    return res;
+}
+
+/**
+ * A more versatile alternative to native "reduce" method
+ *
+ * @param {any} src - source
+ * @param {Function|Array|Object} func - reducer function
+ * @param {any} [acc] - accumulator
+ * @returns {any}
+ */
+function reduce(src, func, acc = src) {
+    if (T.isUnd(func)) {
+        func = (rs, v) => rs + v
+    }
+    forEach(src, (v, k, src) => {
+        acc = func(acc, v, k, src);
+    });
+    return acc
+}
+
+/**
+ * {@link reduce} in reverse
+ * @see reduce
+ * @param {any} src - source
+ * @param {Function|Array|Object} func - reducer function
+ * @param {any} [acc] - accumulator
+ * @returns {any}
+ */
+function reduceRight(src, func, acc = src) {
+    forEachRight(src, (v, k, src) => {
+        acc = func(acc, v, k, src);
+    });
+}
+
+/**
+ * Extract single key-value pairs from object
+ *
+ * @param object
+ * @return {Object[]}
+ */
+function keyValuePairs(object) {
+    let entries = [];
+    forEach(object, (v, k) => {
+        entries.push(T.dict(k, v));
+    });
+    return entries;
+}
+
+/**
+ * Like Object.entries extracts key-value pairs as [[key1,value1],[key2,value2],...]
+ *
+ * @param {Object} object
+ * @return {Array[]}
+ */
+function entries(object) {
+    let entries = [];
+    forEach(object, (v, k) => {
+        entries.push([k, v]);
+    });
+    return entries;
+}
+
+/**
+ * Translate(rename) object fields using dict parameter, omitting undefined keys
+ * @param {Object} source
+ * @param {Object|Array} dict
+ * @return {Array|Object|String}
+ */
+function translateObject(source, dict) {
+    if (T.isArr(dict)) {
+        filter(source, dict);
+    }
+    const keys = Object.keys(dict);
+    let res = filter(source, keys);
+    for (let key of keys) {
+        res[dict[key]] = res[key];
+        delete res[key];
+    }
+    return res;
+}
+
+/**
+ * Recursive deep merge {@param target} with {@param source}
+ *
+ * @param {Object|Array} target
+ * @param {Object|Array} source
+ * @param {Array} excludeKeys - keys to be skipped while merging
+ * @param maxDepth - maximum recursive depth
+ * @param allowUnsafeProps - allow unsafe properties like __proto__
+ * @return {Object|Array}
+ */
+function deepMerge(target,
+                   source,
+                   {
+                       excludeKeys = [],
+                       maxDepth = 999,
+                       allowUnsafeProps = false
+                   } = {excludeKeys: [], maxDepth: 999, allowUnsafeProps: false},
+                   depth = 0) {
+    if (depth >= maxDepth) return target;
+    forEach(source, (v, k) => {
+        if (excludeKeys &amp;&amp; contains(excludeKeys, k)) return;
+        if (allowUnsafeProps &amp;&amp; contains(UNSAFE_PROPS, k)) return;
+        if (T.isObj(source[k])) {
+            target[k] = deepMerge(emptyOf(source[k]), source[k], {excludeKeys, maxDepth, depth: depth + 1});
+        } else
+            target[k] = v
+    });
+    return target;
+}
+
+/**
+ * Recursive deep clone {@param source}
+ * @see deepMerge
+ *
+ * @param {Object|Array} source
+ * @param {Array} excludeKeys - keys to be skipped while merging
+ * @param {Number} [maxDepth] - maximum recursive depth
+ * @param {boolean} [allowUnsafeProps] - allow unsafe properties like __proto__
+ * @return {Object|Array}
+ */
+function deepClone(source,
+                   {
+                       excludeKeys = [],
+                       maxDepth = 999,
+                       allowUnsafeProps = false
+                   } = {excludeKeys: [], maxDepth: 999, allowUnsafeProps: false},) {
+    return deepMerge(emptyOf(source), source, {excludeKeys, maxDepth, allowUnsafeProps})
+}
+
+function _keyGen(key, fnName) {
+    let keyGen = key
+    if (T.isStr(key)) {
+        keyGen = (item)=> item[key]
+    } else if (T.isArr(key)) {
+        keyGen = (item) => reduce(item, (res, v, k)=> {
+            if (contains(key, k)) {
+                return res + v;
+            }
+        }, "")
+    } else if (!T.isFun(key)) {
+        throw Error(`${fnName} key only accepts: String, [String,...], Function`)
+    }
+    return keyGen;
+}
+
+/**
+ * Join arrays of objects based on a generated or static key
+ *
+ * @param {Function|String} key
+ * @param {Object[]} lists
+ * @return {Object}
+ */
+function join(key, ...lists) {
+    if (lists.length === 0) return [];
+    if (!all(lists, T.isArr)) throw Error("Join only accepts arrays of data!");
+    let keyGen = _keyGen(key, "Join")
+    const joined = {};
+    forEach(lists, (list)=>{
+        forEach(list, (item) => {
+            const joinKey = keyGen(item);
+            const presentValue = joined[joinKey];
+            if (!presentValue) {
+                joined[joinKey] = item;
+            } else {
+                joined[joinKey] = concat(presentValue, item)
+            }
+        });
+    })
+
+    return (joined)
+
+}
+
+/**
+ * Group arrays based on generated or static key(s)
+ *
+ * @param {Function|String} key
+ * @param {Object[]} lists
+ * @return {Object}
+ */
+function groupBy(key, ...lists) {
+    if (lists.length === 0) return {};
+    if (!all(lists, T.isArr)) throw Error("GroupBy only accepts arrays of data!");
+    let keyGen = _keyGen(key, "GroupBy")
+    const group = {};
+    forEach(lists, (list)=>{
+        forEach(list, (item) => {
+            const joinKey = keyGen(item);
+            const presentValue = group[joinKey];
+            if (!presentValue) {
+                group[joinKey] = [item];
+            } else {
+                group[joinKey] = concat(presentValue, item)
+            }
+        });
+    })
+
+    return (group)
+
+}
+
+// noinspection JSUnusedGlobalSymbols
+module.exports = {
+    ANY, ALL, BREAK, item, contains, add, remove, toggle, objMatchOne, objMatchAll,
+    deepMerge, deepClone, forN, forEachRange, forEach, forEachRight, firstIndex, first,
+    startsWith, lastIndex, last, endsWith, reverse, any, all, filter, filterRight, reduce, reduceRight,
+    map, flatMap, keyValuePairs, entries, maxIndex, max, minIndex, min,
+    translateObject, omit, join, groupBy, objectValues
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>
