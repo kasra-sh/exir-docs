@@ -79,21 +79,23 @@
 <img src="https://img.shields.io/badge/Compatibility-Mixed-informational" alt="Compatibility ES5" />
 <img src="https://img.shields.io/badge/node->=8-yellow" alt="Node Version >= 8" />
 <br>
-<h1 align="center">eXir Javascript Library</h1>
+<h1 align="center"><b>eXir Javascript Library</b></h1>
 </p>
 <ul>
 <li><a href="#what-is-exir">What is eXir?</a></li>
-<li><a href="#why-use-exir">Why use it?</a></li>
+<li><a href="#why-exir">Why eXir?</a></li>
 <li><a href="#installation">Installation</a>
 <ul>
 <li><a href="#package-manager">Package Manager</a></li>
 <li><a href="#from-source">From Source</a></li>
 </ul>
 </li>
-<li><a href="#how-to-use">Getting Started</a></li>
+<li><a href="#getting-started">Getting Started</a></li>
+<li><a href="https://kasra-sh.github.io/exir-docs">Tutorials</a></li>
+<li><a href="https://kasra-sh.github.io/exir-docs">Documentation</a></li>
 <li><a href="#disclaimer">Disclaimer</a></li>
 </ul>
-<h3>What is eXir?</h3>
+<h2><strong>What is eXir?</strong></h2>
 <p>Persian word اکسیر, pronounced <em>ex'ear</em> is a mythical potion which transmutes things to a substance of higher value (iron to gold) or cures all illness.<br>
 <strong>eXir</strong> is a lightweight javascript library (which is not just a sentence!), and it is supposed to cure dependency <em>infection</em>!<br></p>
 <p>What's included :</p>
@@ -134,21 +136,21 @@ Reusable/Dynamic pure js components (css-in-js included).
 </li>
 </ul>
 <p><em>All</em> of the above in a bundle of <em>less than</em> 15Kb gzipped, which could be the size of a whole web app using only what's necessary (tree-shaking).</p>
-<h3>Why use eXir?</h3>
+<h2><strong>Why eXir?</strong></h2>
 <p>Many libraries/frameworks exist which claim to be fast/lightweight, are in fact what they claim to be in early releases or first stages of development,
 but many start to get bigger and more complicated as they try their hardest to make everything more convenient or add some extra features.
 Why make it so abstract and complicated in the first place and then make some more advanced tools to simplify it?
 Many web developers are dealing with the constant struggle of making frequent changes and optimization, not because some 16core workstation cannot handle extra lines of javascript,
 but for the sake of those not nearly as powerful/optimized mobile browsers (Android, RPi, etc.), the very same devices which are first-class targets for PWAs.</p>
 <hr>
-<h2>Installation</h2>
-<h4>Package Manager</h4>
+<h2><strong>Installation</strong></h2>
+<h3>Package Manager</h3>
 <p>With your prefered package manager run :</p>
 <pre class="prettyprint source lang-shell"><code>$ npm i exir
 </code></pre>
 <pre class="prettyprint source lang-shell"><code>$ yarn add exir
 </code></pre>
-<h4>From Source</h4>
+<h3>From Source</h3>
 <p>Clone the repository and install dependencies using your preferred package manager</p>
 <pre class="prettyprint source lang-sh"><code>$ git clone https://github.com/kasra-sh/exir.git
 $ cd exir
@@ -158,8 +160,8 @@ $ npm install
 <pre class="prettyprint source lang-sh"><code>$ npm run bundle
 </code></pre>
 <hr>
-<h2>Getting Started</h2>
-<h4>Bundles</h4>
+<h2><strong>Getting Started</strong></h2>
+<h3>Bundles</h3>
 <p>Include a monolithic bundle file directly in your html file, bundle files having &quot;*-ext&quot; suffix include extensions.</p>
 <pre class="prettyprint source lang-html"><code>&lt;!-- Modern !-->
   &lt;script src=&quot;exir-bundle-ext.js&quot;>&lt;/script>
@@ -194,7 +196,7 @@ $ npm install
   &lt;/script>
 &lt;!-- ... !-->
 </code></pre>
-<h4>Modules</h4>
+<h3>Modules</h3>
 <p>CommonJS <code>require()</code> example:</p>
 <pre class="prettyprint source lang-js"><code>// Core
 // namespace
@@ -247,9 +249,8 @@ import &quot;exir/ext/collections.ext&quot;;
 // Dom Extensions
 import &quot;exir/ext/dom.ext&quot;;
 </code></pre>
-<p>Refer to <a href="https://exir-docs.github.io">Documentation</a></p>
-<hr>
-<h3>Disclaimer</h3>
+<p>Also read <a href="https://kasra-sh.github.io/exir-docs">Tutorials and Documentation</a></p>
+<h2>Disclaimer</h2>
 <p>This project is under heavy development, some parts may change, break or be removed.<br>
 Documentation is not complete <em>yet</em>, each part's documentation will be added as soon as it seems stable enough.<br>
 Parcel's zero-config has helped a LOT but is not a necessity, it is completely fine to use another bundler/transpiler like Webpack, Rollup or other &quot;magic&quot; tools.
