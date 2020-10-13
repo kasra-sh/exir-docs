@@ -405,7 +405,7 @@ footer {
 
 .prettyprint code {
   line-height: 18px;
-  display: block;
+  display: inline-block;
   background-color: #0d152a;
   color: #4D4E53;
 }
