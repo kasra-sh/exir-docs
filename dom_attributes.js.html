@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>http/request.js - eXir</title>
+    <title>dom/attributes.js - eXir</title>
     
     <meta name="description" content="Javascript Library" />
     
@@ -43,7 +43,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">http/request.js</h1>
+    <h1 class="page-title">dom/attributes.js</h1>
     
 
     
@@ -53,171 +53,144 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const T = require("../core/types");
-const {$, $$} = require("../dom/query")
+            <pre class="prettyprint source linenums"><code>/**
+ * @module DOM
+ * @memberOf dom
+ */
+
+const I = require("../core/collections")
+const T = require("../core/types")
 
 /**
- * Http Content class
+ * Get all element attributes
+ * @param {HTMLElement|Element|Node} e - element
+ * @return {Object}
  */
-class HttpContent{
-    constructor(type, data) {
-        /**
-         * @type {String}
-         */
-        this.type = type;
-        /**
-         * @type {String|Object|Element}
-         */
-        this.data = data;
+function getAttributes(e) {
+    let atr = {};
+    I.forEach(e.getAttributeNames(), (n) => atr[n] = e.getAttribute(n));
+    return atr;
+}
+
+/**
+ *
+ * @param {HTMLElement|Element|Node} e - element
+ * @param {String} a - attribute name
+ * @param {String} [v] - attribute value
+ * @return {boolean}
+ */
+function hasAttr(e, a, v) {
+    if (e.hasAttribute(a)) {
+        if (v) return e.getAttribute(a) === v
+        return true
+    }
+
+    return false
+}
+
+/**
+ * Get element attribute
+ * @param {HTMLElement|Element|Node} e - element
+ * @param {String} a - attribute name
+ * @return {string} - attribute value
+ */
+function getAttr(e, a) {
+    return e.getAttribute(a)
+}
+
+/**
+ * Set element attribute
+ * @param {HTMLElement|Element|Node} e - element
+ * @param {String} a - attribute name
+ * @param {String} [v] - attribute value
+ */
+function setAttr(e, a, v) {
+    if (T.isArr(a)) {
+        I.forEach(a, (n) => this.set(n, v))
+    } else if (T.isObj(a)) {
+        I.forEach(a, (v, k) => this.set(k, v))
+    } else {
+        e.setAttribute(a, v);
     }
 }
 
 /**
- * Http request class
- * @class
+ * Element attributes CRUD wrapper
+ * @memberOf dom
  */
-class HttpRq{
+class Attributes {
     /**
-     * @param {HttpMethod} m
+     * @param {HTMLElement|Element|Node} e - element
      */
-    setMethod(m) {
-        this.method = m.toUpperCase();
-    };
-
-    /**
-     * @param {String} u
-     */
-    setUrl(u) {
-        this.url = encodeURI(u);
-    };
-
-    /**
-     * Set request param/arg
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setArg(n, v) {
-        this.args[n] = v;
-    };
-
-    buildUrlEncoded(args) {
-        let ue = "";
-        args = args || this.args;
-
-        let argNames = Object.keys(args);
-        if (argNames.length>0) {
-            for (let i = 0; i &lt; argNames.length; i++) {
-                ue += encodeURIComponent(argNames[i]) + '=' + encodeURIComponent(args[argNames[i]]);
-                if (i &lt; argNames.length - 1) {
-                    ue += '&amp;';
-                }
-            }
-        }
-        return ue;
-    };
-
-    /**
-     * Set request header
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setHeader(n, v) {
-        this.headers[n] = v.toString();
-    };
-
-    /**
-     * Get request header
-     * @param {String} n - name
-     */
-    getHeader(n) {
-        return this.headers[n];
-    };
-
-    /**
-     * Set request content
-     * @param {String} contentType
-     * @param {any} data
-     */
-    setContent(contentType, data) {
-        this.content.type = contentType.toLowerCase();
-        this.content.data = data;
-    };
-
-    /**
-     * Set request json content
-     * @param {String|Object} data
-     */
-    jsonContent(data) {
-        let str = "";
-        if (typeof data === "string") {
-            str = data;
-        } else {
-            str = JSON.stringify(data);
-        }
-        this.setContent('json', str);
-        this.setHeader('Content-Type', 'application/json');
-    };
-
-    /**
-     * Set request xml content
-     * @param {String|Node} data
-     */
-    xmlContent(data) {
-        if (T.isStr(data))
-            this.setContent('xml', data);
-        else this.setContent('xml', data.outerHTML);
-        this.setHeader('Content-Type', 'application/xml');
-    };
-    /**
-     * Set request multipart data from Form element
-     * @param {String|Node|Element} form - form element/id
-     */
-    formContent(form) {
-        let formElement = $$(form)[0];
-        let frm = new FormData(formElement);
-        this.formMultiPartContent(frm);
-    };
-
-    /**
-     * Set request multipart data from FormData object
-     * @param {FormData} frm - custom form data object
-     */
-    formMultiPartContent(frm) {
-        this.setContent('form_multipart', frm);
-        // this.setHeader('Content-Type', 'multipart/form-data; boundary=' + frm.boundary)
-    };
-
-    /**
-     * Set request data as urlencoded
-     * @param {Object} data
-     */
-    formUrlEncodedContent(data) {
-        this.setContent('form_urlencoded', this.buildUrlEncoded(data));
-        this.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-    };
-
-    /**
-     *
-     * @param {HttpMethod} method
-     * @param {String} url
-     * @param {Object} args
-     * @param {Object} headers
-     * @param {HttpContent} content
-     */
-    constructor(method='GET', url, args, headers, content) {
-        this.args = args || {};
-        this.headers = headers || {};
-        this.content = content || new HttpContent('#urlencoded', {});
-
-        this.setMethod(method);
-
-        this.setUrl(url);
+    constructor(e) {
+        this.element = e;
     }
 
+    /**
+     * All attribute names
+     * @return {String[]}
+     */
+    keys() {
+        return this.element.getAttributeNames()
+    }
+
+    /**
+     * All attributes
+     * @return {Object}
+     */
+    all() {
+        return getAttributes(this.element);
+    }
+
+    /**
+     * Set attribute
+     * @param {String} a - attribute name
+     * @param {String} v - attribute value
+     * @return {this}
+     */
+    set(a, v) {
+        setAttr(this.element, a, v);
+        return this;
+    }
+
+    /**
+     * Get attribute
+     * @param {String} a - attribute name
+     * @return {String}
+     */
+    get(a) {
+        return getAttr(this.element, a)
+    }
+
+    /**
+     * Has attribute
+     * @param {String} a - attribute name
+     * @param {String} v - attribute value
+     * @return {boolean}
+     */
+    has(a, v) {
+        return hasAttr(this.element, a, v);
+    }
+
+    /**
+     * Remove attribute
+     * @param a
+     */
+    remove(a) {
+        this.set(a, undefined);
+    }
 }
 
-module.exports = {HttpContent, HttpRq};
-</code></pre>
+/**
+ * Equivalent of `[new Attributes(e)]{@link dom.Attributes}`
+ * @param {HTMLElement|Element|Node} e - element
+ * @return {dom.Attributes}
+ */
+function attrs(e) {
+    return new Attributes(e)
+}
+
+module.exports = {getAttributes, Attributes, getAttr, hasAttr, setAttr, attrs}</code></pre>
         </article>
     </section>
 

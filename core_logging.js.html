@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>http/request.js - eXir</title>
+    <title>core/logging.js - eXir</title>
     
     <meta name="description" content="Javascript Library" />
     
@@ -43,7 +43,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">http/request.js</h1>
+    <h1 class="page-title">core/logging.js</h1>
     
 
     
@@ -53,171 +53,108 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const T = require("../core/types");
-const {$, $$} = require("../dom/query")
+            <pre class="prettyprint source linenums"><code>const {Enum} = require("./types");
 
 /**
- * Http Content class
+ * @module core/logging
+ * @memberOf core
  */
-class HttpContent{
-    constructor(type, data) {
-        /**
-         * @type {String}
-         */
-        this.type = type;
-        /**
-         * @type {String|Object|Element}
-         */
-        this.data = data;
-    }
+
+/** @private */
+function _logTime() {
+    let t = new Date();
+    return `${t.getHours()}:${t.getMinutes()}:${t.getSeconds()}:${t.getMilliseconds()}`;
+}
+
+/** @private */
+function _logTitle(flag) {
+    return `[${flag}] [${_logTime()}]`;
+}
+
+/** @private */
+function _prepareLog(args, lt) {
+    args.reverse();
+    args.push("display: inline-block; font-weight: bold; color: black", "%c"+lt);
+    args.reverse();
 }
 
 /**
- * Http request class
- * @class
+ * @type {Object}
  */
-class HttpRq{
-    /**
-     * @param {HttpMethod} m
-     */
-    setMethod(m) {
-        this.method = m.toUpperCase();
-    };
-
-    /**
-     * @param {String} u
-     */
-    setUrl(u) {
-        this.url = encodeURI(u);
-    };
-
-    /**
-     * Set request param/arg
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setArg(n, v) {
-        this.args[n] = v;
-    };
-
-    buildUrlEncoded(args) {
-        let ue = "";
-        args = args || this.args;
-
-        let argNames = Object.keys(args);
-        if (argNames.length>0) {
-            for (let i = 0; i &lt; argNames.length; i++) {
-                ue += encodeURIComponent(argNames[i]) + '=' + encodeURIComponent(args[argNames[i]]);
-                if (i &lt; argNames.length - 1) {
-                    ue += '&amp;';
-                }
-            }
-        }
-        return ue;
-    };
-
-    /**
-     * Set request header
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setHeader(n, v) {
-        this.headers[n] = v.toString();
-    };
-
-    /**
-     * Get request header
-     * @param {String} n - name
-     */
-    getHeader(n) {
-        return this.headers[n];
-    };
-
-    /**
-     * Set request content
-     * @param {String} contentType
-     * @param {any} data
-     */
-    setContent(contentType, data) {
-        this.content.type = contentType.toLowerCase();
-        this.content.data = data;
-    };
-
-    /**
-     * Set request json content
-     * @param {String|Object} data
-     */
-    jsonContent(data) {
-        let str = "";
-        if (typeof data === "string") {
-            str = data;
-        } else {
-            str = JSON.stringify(data);
-        }
-        this.setContent('json', str);
-        this.setHeader('Content-Type', 'application/json');
-    };
-
-    /**
-     * Set request xml content
-     * @param {String|Node} data
-     */
-    xmlContent(data) {
-        if (T.isStr(data))
-            this.setContent('xml', data);
-        else this.setContent('xml', data.outerHTML);
-        this.setHeader('Content-Type', 'application/xml');
-    };
-    /**
-     * Set request multipart data from Form element
-     * @param {String|Node|Element} form - form element/id
-     */
-    formContent(form) {
-        let formElement = $$(form)[0];
-        let frm = new FormData(formElement);
-        this.formMultiPartContent(frm);
-    };
-
-    /**
-     * Set request multipart data from FormData object
-     * @param {FormData} frm - custom form data object
-     */
-    formMultiPartContent(frm) {
-        this.setContent('form_multipart', frm);
-        // this.setHeader('Content-Type', 'multipart/form-data; boundary=' + frm.boundary)
-    };
-
-    /**
-     * Set request data as urlencoded
-     * @param {Object} data
-     */
-    formUrlEncodedContent(data) {
-        this.setContent('form_urlencoded', this.buildUrlEncoded(data));
-        this.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-    };
-
-    /**
-     *
-     * @param {HttpMethod} method
-     * @param {String} url
-     * @param {Object} args
-     * @param {Object} headers
-     * @param {HttpContent} content
-     */
-    constructor(method='GET', url, args, headers, content) {
-        this.args = args || {};
-        this.headers = headers || {};
-        this.content = content || new HttpContent('#urlencoded', {});
-
-        this.setMethod(method);
-
-        this.setUrl(url);
-    }
-
+const LogLevels = {TRACE:0, INFO:0, WARN:0, ERROR:0, SILENT:0};
+/**
+ * Log config
+ * @type {{LogLevel: *}}
+ */
+const Config = {
+    LogLevel : LogLevels.TRACE
 }
 
-module.exports = {HttpContent, HttpRq};
-</code></pre>
+/** Set `Config.LogLevel` to TRACE */
+function showTrace() {Config.LogLevel = LogLevels.TRACE;}
+
+/** Set `Config.LogLevel` to INFO */
+function showInfo() {Config.LogLevel = LogLevels.INFO;}
+
+/** Set `Config.LogLevel` to WARN */
+function showWarn() {Config.LogLevel = LogLevels.WARN;}
+
+/** Set `Config.LogLevel` to ERROR */
+function showError() {Config.LogLevel = LogLevels.ERROR;}
+
+/** Set `Config.LogLevel` to SILENT */
+function silent() {Config.LogLevel = LogLevels.SILENT;}
+
+/** Set Config.LogLevel
+ * @param l - LogLevel */
+function lvl(l) {
+    return Config.LogLevel !== LogLevels.SILENT &amp;&amp; Config.LogLevel &lt;= l
+}
+
+/**
+ * Log Trace
+ * @param {any} args
+ */
+function trace(...args) {
+    if (!lvl(LogLevels.TRACE)) return;
+    args.reverse();
+    args.push(_logTitle("X-TRACE"));
+    args.reverse();    // args.push("\n");
+    console.trace.apply(this, args);
+}
+/**
+ * Log Info
+ * @param {any} args
+ */
+function info(...args) {
+    if (!lvl(LogLevels.INFO)) return;
+    _prepareLog(args, _logTitle("X-INFO"));
+    console.log.apply(this, args);
+}
+/**
+ * Log Warning
+ * @param {any} args
+ */
+function warn(...args) {
+    if (!lvl(LogLevels.WARN)) return;
+    _prepareLog(args, _logTitle("X-WARN"));
+    console.warn.apply(this, args);
+}
+/**
+ * Log Error
+ * @param {any} args
+ */
+function error(...args) {
+    if (!lvl(LogLevels.ERROR)) return;
+    _prepareLog(args, _logTitle("X-ERROR"));
+    console.error.apply(this, args);
+}
+
+module.exports = {
+    Config,
+    LogLevels,
+    showTrace, showInfo, showWarn, showError, silent, trace, info, warn, error
+};</code></pre>
         </article>
     </section>
 

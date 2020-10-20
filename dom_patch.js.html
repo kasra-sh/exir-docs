@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>http/request.js - eXir</title>
+    <title>dom/patch.js - eXir</title>
     
     <meta name="description" content="Javascript Library" />
     
@@ -43,7 +43,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">http/request.js</h1>
+    <h1 class="page-title">dom/patch.js</h1>
     
 
     
@@ -53,171 +53,59 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const T = require("../core/types");
-const {$, $$} = require("../dom/query")
+            <pre class="prettyprint source linenums"><code>/**
+ * @module DOM
+ * @memberOf dom
+ */
+const {error} = require("../core/logging");
+const {forEach} = require("../core/collections");
+const {isVal, isArr, isObj, isEl, hasField} = require("../core/types");
+const {setAttr} = require("./attributes");
+const {setEvent} = require("./event");
+// const {cls} = require("./classes");
+const ATR = 'atr'
+const CLS = 'cls'
+const EVT = 'evt'
 
 /**
- * Http Content class
+ * Modify a DOM element/node
+ * @param {HTMLElement|Element|Node} node - DOM element/node
+ * @param {Object} object - patch data {atr: Attributes, cls: Classes, evt: Events}
  */
-class HttpContent{
-    constructor(type, data) {
-        /**
-         * @type {String}
-         */
-        this.type = type;
-        /**
-         * @type {String|Object|Element}
-         */
-        this.data = data;
+function patch(node, object) {
+    if (!isVal(node)) {
+        error(`Node is ${node}`)
+        return
     }
-}
-
-/**
- * Http request class
- * @class
- */
-class HttpRq{
-    /**
-     * @param {HttpMethod} m
-     */
-    setMethod(m) {
-        this.method = m.toUpperCase();
-    };
-
-    /**
-     * @param {String} u
-     */
-    setUrl(u) {
-        this.url = encodeURI(u);
-    };
-
-    /**
-     * Set request param/arg
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setArg(n, v) {
-        this.args[n] = v;
-    };
-
-    buildUrlEncoded(args) {
-        let ue = "";
-        args = args || this.args;
-
-        let argNames = Object.keys(args);
-        if (argNames.length>0) {
-            for (let i = 0; i &lt; argNames.length; i++) {
-                ue += encodeURIComponent(argNames[i]) + '=' + encodeURIComponent(args[argNames[i]]);
-                if (i &lt; argNames.length - 1) {
-                    ue += '&amp;';
-                }
-            }
+    if (!isEl(node)) {
+        error(`"${node}" is not Element or Node`);
+        return
+    }
+    if (hasField(object, ATR)) {
+        if (isObj(object[ATR])) {
+            forEach(object[ATR], (v, k)=>{
+                setAttr(node, k, v)
+            })
         }
-        return ue;
-    };
-
-    /**
-     * Set request header
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setHeader(n, v) {
-        this.headers[n] = v.toString();
-    };
-
-    /**
-     * Get request header
-     * @param {String} n - name
-     */
-    getHeader(n) {
-        return this.headers[n];
-    };
-
-    /**
-     * Set request content
-     * @param {String} contentType
-     * @param {any} data
-     */
-    setContent(contentType, data) {
-        this.content.type = contentType.toLowerCase();
-        this.content.data = data;
-    };
-
-    /**
-     * Set request json content
-     * @param {String|Object} data
-     */
-    jsonContent(data) {
-        let str = "";
-        if (typeof data === "string") {
-            str = data;
+    }
+    if (hasField(object, CLS)) {
+        const cls = object[CLS];
+        if (isArr(cls)){
+            node.className = cls.join(' ')
         } else {
-            str = JSON.stringify(data);
+            node.className = cls
         }
-        this.setContent('json', str);
-        this.setHeader('Content-Type', 'application/json');
-    };
-
-    /**
-     * Set request xml content
-     * @param {String|Node} data
-     */
-    xmlContent(data) {
-        if (T.isStr(data))
-            this.setContent('xml', data);
-        else this.setContent('xml', data.outerHTML);
-        this.setHeader('Content-Type', 'application/xml');
-    };
-    /**
-     * Set request multipart data from Form element
-     * @param {String|Node|Element} form - form element/id
-     */
-    formContent(form) {
-        let formElement = $$(form)[0];
-        let frm = new FormData(formElement);
-        this.formMultiPartContent(frm);
-    };
-
-    /**
-     * Set request multipart data from FormData object
-     * @param {FormData} frm - custom form data object
-     */
-    formMultiPartContent(frm) {
-        this.setContent('form_multipart', frm);
-        // this.setHeader('Content-Type', 'multipart/form-data; boundary=' + frm.boundary)
-    };
-
-    /**
-     * Set request data as urlencoded
-     * @param {Object} data
-     */
-    formUrlEncodedContent(data) {
-        this.setContent('form_urlencoded', this.buildUrlEncoded(data));
-        this.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-    };
-
-    /**
-     *
-     * @param {HttpMethod} method
-     * @param {String} url
-     * @param {Object} args
-     * @param {Object} headers
-     * @param {HttpContent} content
-     */
-    constructor(method='GET', url, args, headers, content) {
-        this.args = args || {};
-        this.headers = headers || {};
-        this.content = content || new HttpContent('#urlencoded', {});
-
-        this.setMethod(method);
-
-        this.setUrl(url);
     }
-
+    if (hasField(object, EVT)) {
+        if (isObj(object[EVT])) {
+            forEach(object[EVT], (v, k)=>{
+                setEvent(node, k, v)
+            })
+        }
+    }
 }
 
-module.exports = {HttpContent, HttpRq};
-</code></pre>
+module.exports = {patch}</code></pre>
         </article>
     </section>
 

@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>http/request.js - eXir</title>
+    <title>Tutorial: Getting Started - eXir</title>
     
     <meta name="description" content="Javascript Library" />
     
@@ -43,186 +43,98 @@
 
 <div id="main">
     
-    <h1 class="page-title">http/request.js</h1>
+    <h1 class="page-title">Tutorial: Getting Started</h1>
     
 
-    
-
-
-
-    
     <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>const T = require("../core/types");
-const {$, $$} = require("../dom/query")
 
-/**
- * Http Content class
- */
-class HttpContent{
-    constructor(type, data) {
-        /**
-         * @type {String}
-         */
-        this.type = type;
-        /**
-         * @type {String|Object|Element}
-         */
-        this.data = data;
-    }
-}
+<header>
+    
 
-/**
- * Http request class
- * @class
- */
-class HttpRq{
-    /**
-     * @param {HttpMethod} m
-     */
-    setMethod(m) {
-        this.method = m.toUpperCase();
-    };
+    <h2>Getting Started</h2>
+</header>
 
-    /**
-     * @param {String} u
-     */
-    setUrl(u) {
-        this.url = encodeURI(u);
-    };
+<article>
+    <p>Please first read installation part if you haven't yet.
+eXir can be imported as separate <a href="#modules">modules</a> or a single monolithic <a href="#bundle">bundle</a>.</p>
+<h4>Modules</h4>
+<p>CommonJS <code>require()</code> example:</p>
+<pre class="prettyprint source lang-js"><code>// Core
+// namespace
+const X = require(&quot;exir/core&quot;);
+// functions
+const {join} = require(&quot;exir/core/collections&quot;);
+const {debounce} = require(&quot;exir/core/functions&quot;);
 
-    /**
-     * Set request param/arg
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setArg(n, v) {
-        this.args[n] = v;
-    };
+// Dom
+// namespace
+const Dom = require(&quot;exir/dom&quot;);
+// functions
+const {toggleClass} = require(&quot;exir/dom/classes&quot;);
 
-    buildUrlEncoded(args) {
-        let ue = "";
-        args = args || this.args;
+// Http
+// namespace
+const Http = require(&quot;exir/http&quot;);
+// http methods
+const {sendGet, Post} = require(&quot;exir/http/methods&quot;);
+// http client
+const {XHttpClient} = require(&quot;exir/http/client&quot;);
 
-        let argNames = Object.keys(args);
-        if (argNames.length>0) {
-            for (let i = 0; i &lt; argNames.length; i++) {
-                ue += encodeURIComponent(argNames[i]) + '=' + encodeURIComponent(args[argNames[i]]);
-                if (i &lt; argNames.length - 1) {
-                    ue += '&amp;';
-                }
-            }
-        }
-        return ue;
-    };
+// View-Model
+const {mount, Component, VNode} = require(&quot;exir/vm/app&quot;);
 
-    /**
-     * Set request header
-     * @param {String} n - name
-     * @param {String} v - value
-     */
-    setHeader(n, v) {
-        this.headers[n] = v.toString();
-    };
-
-    /**
-     * Get request header
-     * @param {String} n - name
-     */
-    getHeader(n) {
-        return this.headers[n];
-    };
-
-    /**
-     * Set request content
-     * @param {String} contentType
-     * @param {any} data
-     */
-    setContent(contentType, data) {
-        this.content.type = contentType.toLowerCase();
-        this.content.data = data;
-    };
-
-    /**
-     * Set request json content
-     * @param {String|Object} data
-     */
-    jsonContent(data) {
-        let str = "";
-        if (typeof data === "string") {
-            str = data;
-        } else {
-            str = JSON.stringify(data);
-        }
-        this.setContent('json', str);
-        this.setHeader('Content-Type', 'application/json');
-    };
-
-    /**
-     * Set request xml content
-     * @param {String|Node} data
-     */
-    xmlContent(data) {
-        if (T.isStr(data))
-            this.setContent('xml', data);
-        else this.setContent('xml', data.outerHTML);
-        this.setHeader('Content-Type', 'application/xml');
-    };
-    /**
-     * Set request multipart data from Form element
-     * @param {String|Node|Element} form - form element/id
-     */
-    formContent(form) {
-        let formElement = $$(form)[0];
-        let frm = new FormData(formElement);
-        this.formMultiPartContent(frm);
-    };
-
-    /**
-     * Set request multipart data from FormData object
-     * @param {FormData} frm - custom form data object
-     */
-    formMultiPartContent(frm) {
-        this.setContent('form_multipart', frm);
-        // this.setHeader('Content-Type', 'multipart/form-data; boundary=' + frm.boundary)
-    };
-
-    /**
-     * Set request data as urlencoded
-     * @param {Object} data
-     */
-    formUrlEncodedContent(data) {
-        this.setContent('form_urlencoded', this.buildUrlEncoded(data));
-        this.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-    };
-
-    /**
-     *
-     * @param {HttpMethod} method
-     * @param {String} url
-     * @param {Object} args
-     * @param {Object} headers
-     * @param {HttpContent} content
-     */
-    constructor(method='GET', url, args, headers, content) {
-        this.args = args || {};
-        this.headers = headers || {};
-        this.content = content || new HttpContent('#urlencoded', {});
-
-        this.setMethod(method);
-
-        this.setUrl(url);
-    }
-
-}
-
-module.exports = {HttpContent, HttpRq};
+// All Extensions
+require(&quot;exir/ext&quot;);
+// Collection Extensions
+require(&quot;exir/ext/collections.ext&quot;);
+// Dom Extensions
+require(&quot;exir/ext/dom.ext&quot;);
 </code></pre>
-        </article>
-    </section>
+<p>ECMAScript Modules(ESM) <code>import</code> example:</p>
+<pre class="prettyprint source lang-js"><code>// Core
+import {join, flatMap, debounce} from &quot;exir/core/collections&quot;
 
+// Dom
+import {css, toggleClass, event} from &quot;exir/dom&quot;
 
+// Http
+import {XHttpClient, Get, sendPost} from &quot;exir/http&quot;
 
+// View-Model
+import {mount, Component, VNode} from &quot;exir/vm/app&quot;
+
+// All Extensions
+import &quot;exir/ext&quot;;
+// Collection Extensions
+import &quot;exir/ext/collections.ext&quot;;
+// Dom Extensions
+import &quot;exir/ext/dom.ext&quot;;
+</code></pre>
+<h4>Bundle</h4>
+<p>Include any bundle you prefer in a script tag and it will become available as two global namespaces.<br>Core, Http and DOM functions are all under <code>X</code> global variable.<br>
+View-Model rendering classes and functions are under <code>VM</code> global variable.</p>
+<p>For example to send a request and transform response data:</p>
+<pre class="prettyprint source lang-html"><code>&lt;head>
+&lt;!--  Bundle with extensions  -->
+  &lt;script src=&quot;exir-bundle-ext.js&quot;>&lt;/script>
+&lt;!--  ...  -->
+&lt;/head>
+&lt;!--  ...  -->
+&lt;script>
+var rs = await X.sendGet({
+      url:'https://httpbin.org/get',
+      params: {count:1},
+      headers: {'X-Custom-Header': 'some value'}
+    }).then((ajax)=>ajax.Rs.json);
+
+console.log(X.filter(rs, ['headers', 'args']));
+// the above using $filter extension
+console.log(rs.$filter(['headers', 'args']));
+&lt;/script>
+</code></pre>
+</article>
+
+</section>
 
     
     
